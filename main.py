@@ -17,13 +17,14 @@ driver.get("https://demoqa.com/login")
 # Locate username, password and login button
 username_field = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, 'userName')))
 password_field = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, 'password')))
-login_button = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, 'login')))
+# login_button = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, 'login')))
+login_button = driver.find_element(By.ID, 'login')
 
 # Fill in username and password
 username_field.send_keys("dziampar")
 password_field.send_keys("d+Dias220266!")
-login_button.click()
-
+# login_button.click()
+driver.execute_script('arguments[0].click();', login_button)
 
 input('Press Enter to close the browser')
 driver.quit()
